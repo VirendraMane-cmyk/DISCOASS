@@ -1,0 +1,19 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/virendra/Virendra/DISCOASS-1/template'
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _create_graph, symObjAddr: 0x0, symBinAddr: 0x1000038D8, symSize: 0x20C }
+  - { offsetInCU: 0x99, offset: 0x99, size: 0x8, addend: 0x0, symName: _create_graph, symObjAddr: 0x0, symBinAddr: 0x1000038D8, symSize: 0x20C }
+  - { offsetInCU: 0x169, offset: 0x169, size: 0x8, addend: 0x0, symName: _checkGreaterThan4, symObjAddr: 0x20C, symBinAddr: 0x100003AE4, symSize: 0xBC }
+  - { offsetInCU: 0x1C9, offset: 0x1C9, size: 0x8, addend: 0x0, symName: _find_junctions, symObjAddr: 0x2C8, symBinAddr: 0x100003BA0, symSize: 0x9C }
+  - { offsetInCU: 0x21B, offset: 0x21B, size: 0x8, addend: 0x0, symName: _sheldons_tour, symObjAddr: 0x364, symBinAddr: 0x100003C3C, symSize: 0x24 }
+  - { offsetInCU: 0x251, offset: 0x251, size: 0x8, addend: 0x0, symName: _warshall, symObjAddr: 0x388, symBinAddr: 0x100003C60, symSize: 0x88 }
+  - { offsetInCU: 0x2A3, offset: 0x2A3, size: 0x8, addend: 0x0, symName: _find_impossible_pairs, symObjAddr: 0x410, symBinAddr: 0x100003CE8, symSize: 0x2C }
+  - { offsetInCU: 0x2D9, offset: 0x2D9, size: 0x8, addend: 0x0, symName: _find_vital_train_tracks, symObjAddr: 0x43C, symBinAddr: 0x100003D14, symSize: 0x14 }
+  - { offsetInCU: 0x301, offset: 0x301, size: 0x8, addend: 0x0, symName: _upgrade_railway_stations, symObjAddr: 0x450, symBinAddr: 0x100003D28, symSize: 0x34 }
+  - { offsetInCU: 0x337, offset: 0x337, size: 0x8, addend: 0x0, symName: _distance, symObjAddr: 0x484, symBinAddr: 0x100003D5C, symSize: 0x1C }
+  - { offsetInCU: 0x37B, offset: 0x37B, size: 0x8, addend: 0x0, symName: _railway_capital, symObjAddr: 0x4A0, symBinAddr: 0x100003D78, symSize: 0x14 }
+  - { offsetInCU: 0x3A3, offset: 0x3A3, size: 0x8, addend: 0x0, symName: _maharaja_express_tour, symObjAddr: 0x4B4, symBinAddr: 0x100003D8C, symSize: 0x28 }
+  - { offsetInCU: 0x403, offset: 0x403, size: 0x8, addend: 0x0, symName: _maharaja_express, symObjAddr: 0x4DC, symBinAddr: 0x100003DB4, symSize: 0x84 }
+  - { offsetInCU: 0x463, offset: 0x463, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x560, symBinAddr: 0x100003E38, symSize: 0x78 }
+...

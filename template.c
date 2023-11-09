@@ -77,7 +77,7 @@ int find_junctions(Graph* g) {
     //infinity in adjacency matrix.
     //Junction if atleast 4 1's in the row
     for(int i  =  0; i < g->n;i++){
-        if(checkGreaterThan4(g->adj[i],g->n));
+        if(checkGreaterThan4(g->adj[i],g->n) == true);
         junction++;
     }
     return junction;
