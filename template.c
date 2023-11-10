@@ -77,8 +77,9 @@ int find_junctions(Graph* g) {
     //infinity in adjacency matrix.
     //Junction if atleast 4 1's in the row
     for(int i  =  0; i < g->n;i++){
-        if(checkGreaterThan4(g->adj[i],g->n) == true);
+        if(checkGreaterThan4(g->adj[i],g->n) == true){
         junction++;
+        }
     }
     return junction;
 
@@ -92,7 +93,13 @@ int find_junctions(Graph* g) {
  * If false, then question 2(b) must be solved.
 */
 bool sheldons_tour(Graph* g, bool SAME_STATION) {
-    
+    int len = g->n; //Number of nodes in the graph
+    if(SAME_STATION){
+        
+    }
+    else{
+
+    }
 }
 
 /**
@@ -107,6 +114,25 @@ int** warshall(Graph* g) {
     }
 
     // Code goes here
+    //Loop to assign closure = g->adj
+    int len = g->n;
+    for(int i = 0;i < len;i++){
+        for(int j = 0; j < len;j++){
+            closure[i][j] = g->adj[i][j];
+        }
+    }
+        
+    for(int k = 0; k < len;k++){
+        for(int i = 0;i < len;i++){
+            for(int j = 0;j < len;j++){
+                int temp = (closure[i][j]) + (closure[i][k]*closure[k][j]);
+                if(temp >= 1){
+                    temp = 1;
+                }
+                closure[i][j] = temp;
+            }
+        }
+    }
     
     return closure; // Do not modify
 }
@@ -117,6 +143,25 @@ int** warshall(Graph* g) {
 */
 int find_impossible_pairs(Graph* g) {
     int** closure = warshall(g); // Do not modify
+    int len = g->n;
+    //As the train can travel in both directions on any given track,the graph is undirected
+    //hence if a path from x->y exists,then it is guarenteed that a path from y->x will also
+    //exist
+    int count = 0;
+    for(int i=0;i<len;i++){
+        for(int j=0;j<len;j++){
+            printf("%d ",closure[i][j]);
+        }
+        printf("\n");
+    }
+    for(int i = 0;i < len;i++){
+        for(int j = 0; j < len;j++){
+            if(closure[i][j] == 0){
+                count++;
+            }
+        }
+    }
+    return count/2;//To ensure that same path is not counted twice
     
 }
 
@@ -181,10 +226,14 @@ bool maharaja_express(Graph* g, int source) {
 }
 
 int main() {
-    char input_file_path[100] = "testcase_1.txt"; // Can be modified
+    char input_file_path[100] = "testcase_3.txt"; // Can be modified
     Graph* g = create_graph(input_file_path); // Do not modify
     
     // Code goes here
+    int p = find_impossible_pairs(g);
+    printf("Number of impossible pairs are %d\n", p);
+
+    
 
     return 0;
 }
