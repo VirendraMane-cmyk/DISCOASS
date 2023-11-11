@@ -19,14 +19,14 @@ Problem Statement:
 You are given a railway network, with tracks connecting distinct railway stations in various cities. All tracks are bi-directional, that is, a train can travel in both directions on any given track. Any pair of cities may be connected  by at most one track.
 Implement functions to solve the following problems on this network:
 
-Q.1 A railway station is called a junction if it is directly connected to at least 4 different stations by train tracks. Find the number of junctions in the network. 
+Q.1 A railway station is called a junction if it is directly connected to at least 4 different stations by train tracks. Find the number of junctions in the network. //Done
 
 Q.2 Sheldon is a train enthusiast and wants to travel every through single train track in the country! However, he also gets bored quickly, and does not want to travel through any track multiple times. Please help Sheldon find if the following tours of the country are possible or not:
 A tour which starts at a particular station, goes through every track exactly once, and ends at the same station. 
 A tour which starts at a particular station, goes through every track exactly once, and ends at some different station. 
 Note: This question will only be tested on networks that are connected.
 
-Q.3 Find the number of pairs of cities (x, y) such that it is impossible to travel between these two cities using one or more trains. Note that (x, y) and (y, x) are the same pair, do not count it twice! Hint: Use Warshall’s Algorithm to compute the transitive closure of the graph. 
+Q.3 Find the number of pairs of cities (x, y) such that it is impossible to travel between these two cities using one or more trains. Note that (x, y) and (y, x) are the same pair, do not count it twice! Hint: Use Warshall’s Algorithm to compute the transitive closure of the graph. //Done
 
 Q.4 The Ministry of Railways is considering upgrading the train tracks, to reduce travel times for passengers. However, this requires the tracks to undergo maintenance, during which trains cannot run on the tracks and must be rerouted. But sometimes, there might not be any alternative route! This can cause some cities which were originally connected, to become disconnected. Let us call a train track vital, if its maintenance can cause some cities to become disconnected (that is, there is no alternative route for those cities that doesn’t pass through this track). 
 As advisor to the Ministry, you have to find the number of vital train tracks in the network.

@@ -94,8 +94,8 @@ int find_junctions(Graph* g) {
 */
 bool sheldons_tour(Graph* g, bool SAME_STATION) {
     int len = g->n; //Number of nodes in the graph
-    if(SAME_STATION){
-        
+    if(SAME_STATION == true){
+
     }
     else{
 
@@ -169,9 +169,50 @@ int find_impossible_pairs(Graph* g) {
  * Q.4
  * Return the number of vital train tracks.
 */
+/**
+ * Q.4
+ * Return the number of vital train tracks.
+*/
 int find_vital_train_tracks(Graph* g) {
-    
+    int len = g->n;
+    int vital_tracks = 0;
+
+    // Iterate over all edges in the graph
+    for (int i = 0; i < len; i++) {
+        for (int j = i + 1; j < len; j++) {
+            if (g->adj[i][j] == 1) {
+                // Temporarily remove the edge (i, j)->To completely remove the edge 
+                //you will have to set both (i,j) and (j,i) pairs to zero in the adj matrix
+                g->adj[i][j] = 0;
+                g->adj[j][i] = 0;
+
+                // Check if the closure changes
+                int** closure = warshall(g);
+                int is_connected = closure[i][j];//You have to check just for the connectivity of
+                //the removed edge as the other paths can then be traversed by traversing the 
+                //path using the closure
+
+                // Restore the edge
+                g->adj[i][j] = 1;
+                g->adj[j][i] = 1;
+
+                // Count the vital track
+                if (!is_connected) {
+                    vital_tracks++;
+                }
+
+                // Free memory for closure
+                for (int m = 0; m < len; m++) {
+                    free(closure[m]);
+                }
+                free(closure);
+            }
+        }
+    }
+
+    return vital_tracks;
 }
+
 
 /**
  * Q.5
@@ -226,12 +267,12 @@ bool maharaja_express(Graph* g, int source) {
 }
 
 int main() {
-    char input_file_path[100] = "testcase_3.txt"; // Can be modified
+    char input_file_path[100] = "testcase_2.txt"; // Can be modified
     Graph* g = create_graph(input_file_path); // Do not modify
     
     // Code goes here
-    int p = find_impossible_pairs(g);
-    printf("Number of impossible pairs are %d\n", p);
+    int vital = find_vital_train_tracks(g);
+    printf("%d ",vital);
 
     
 
