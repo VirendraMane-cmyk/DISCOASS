@@ -94,11 +94,55 @@ int find_junctions(Graph* g) {
 */
 bool sheldons_tour(Graph* g, bool SAME_STATION) {
     int len = g->n; //Number of nodes in the graph
+    
     if(SAME_STATION == true){
-
+        //First case involves checking whether the given graph is a Euler circuit
+        //Return true if it is possible to find a euler curcuit , return false in any other
+        //case
+        bool flag = true; //Flag will be set to false and the function will return immediately
+        //the moment a vertex having odd degree is found;
+        for(int i = 0; i < len;i++){
+            int tempDegree = 0;
+            for(int j = 0; j < len;j++){
+                if(g->adj[i][j] == 1){
+                    tempDegree++;
+                }
+            }
+            if(tempDegree%2 != 0){
+                flag = false;
+                return flag;
+            }
+        }
+        return flag;
     }
     else{
-
+        //A connected multigraph has an Euler path but not an Euler circuit if and only 
+        //if it has exactly two vertices of odd degree.
+        //Euler curcuit are subsets of euler paths.
+        //For a given graph to be a euler curcuit but not a euler graph we need to have 
+        //exactly two vertices having odd degrees.
+        //Return true if an path which an euler path exclusively is found i.e exactly two 
+        //odd degrees exist, false otherwise.
+        int countOdd = 0;
+        for (int i = 0; i < len; i++)
+        {
+            int tempDegree = 0;
+            for (int j = 0; j < len; j++)
+            {
+                if(g->adj[i][j] == 1){
+                    tempDegree++;
+                }
+            }
+            if(tempDegree%2 != 0){
+                countOdd++;
+            }
+            
+        }
+        if(countOdd == 2){
+            return true;
+        }
+        return false;
+        
     }
 }
 
@@ -271,8 +315,13 @@ int main() {
     Graph* g = create_graph(input_file_path); // Do not modify
     
     // Code goes here
-    int vital = find_vital_train_tracks(g);
-    printf("%d ",vital);
+    bool check = sheldons_tour(g,true);
+    if(check == false){
+        printf("IMPOSSIBLE  ");
+    }
+    else{
+        printf("POSSIBLE  ");
+    }
 
     
 
