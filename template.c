@@ -265,10 +265,15 @@ int find_vital_train_tracks(Graph* g) {
  * upgrades[i] should be 1 if railway station i gets a maintenance depot
  * If it is not possible to upgrade, then return "-1" in the entire array
 */
+
 int* upgrade_railway_stations(Graph* g) {
     int* upgrades = calloc(g->n, sizeof(int)); // Do not modify
     
     // Code goes here
+    //Question involves checking if the graph is bipartite.
+    //Use dfs for coloring the graph and checking if it is possible to color the graph using
+    //two colors
+
 
     return upgrades; // Do not modify
 }
@@ -279,7 +284,62 @@ int* upgrade_railway_stations(Graph* g) {
  * city_x is the index of X, city_y is the index of Y
 */
 int distance(Graph* g, int city_x, int city_y) {
+    //Use dji.. somethings algorithm to caculate the shortest path between any two 
+    //paths if transitive closure does not contain a path then return -1;
+    int** warshallMatrix = warshall(g);
+    //asthe cities passed as paramter are zero indexed 
+    if(warshallMatrix[city_x][city_y] == 0){
+        return -1;
+        //It is impossible to travel between city_x and city_y if the transitive closure does not
+        //contain 1 at their indices.
+    }
+    //check if a direct path exists between the two vertices
+    if(g->adj[city_x][city_y] == 1){
+        return 1;
+    }
+    int len = g->n;
+    //can brute force to check all the possible path lengths 
+    //Length of each path in track is 1
+    //make a new warshall matrix this time calculating path length
+    int** warshallNew = (int**)calloc(len, sizeof(int*));
+    for (int i = 0; i < len; i++) {
+        warshallNew[i] = (int*)calloc(len, sizeof(int));
+    }
+
+    for (int i = 0; i < len; i++)
+    {
+        for (int j = 0; j < len; j++)
+        {
+            warshallNew[i][j] = g->adj[i][j];
+            if(warshallNew[i][j] == 0){
+                warshallNew[i][j] = INT32_MAX;//->change made to show no path at length max;
+            }
+        }
+        
+    }
     
+    for (int k = 0; k < len; k++) {
+    for (int i = 0; i < len; i++) {
+        for (int j = 0; j < len; j++) {
+            int temp = warshallNew[i][k] + warshallNew[k][j];
+            if (temp < warshallNew[i][j] && temp >= 1) {
+                warshallNew[i][j] = temp;
+            }
+        }
+    }
+}
+    for (int i = 0; i < len; i++)
+    {
+        for (int j = 0; j < len; j++)
+        {
+            printf("%d ",warshallNew[i][j]);
+        }
+        printf("\n");
+        
+    }
+    
+    return warshallNew[city_x][city_y];
+
 }
 
 /**
@@ -311,18 +371,12 @@ bool maharaja_express(Graph* g, int source) {
 }
 
 int main() {
-    char input_file_path[100] = "testcase_2.txt"; // Can be modified
+    char input_file_path[100] = "testcase_3.txt"; // Can be modified
     Graph* g = create_graph(input_file_path); // Do not modify
     
     // Code goes here
-    bool check = sheldons_tour(g,true);
-    if(check == false){
-        printf("IMPOSSIBLE  ");
-    }
-    else{
-        printf("POSSIBLE  ");
-    }
-
+    int distance1 = distance(g,3,7);
+    printf("The distance  between the cities is %d", distance1);
     
 
     return 0;
