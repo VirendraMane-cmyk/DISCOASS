@@ -1,7 +1,7 @@
 /**
- * Group ID - 
- * Member 1 Name - 
- * Member 1 BITS ID - 
+ * Group ID - 28
+ * Member 1 Name - Virendrasinh Mane 
+ * Member 1 BITS ID - 2022A7PS1175P
  * Member 2 Name - 
  * Member 2 BITS ID - 
  * Member 3 Name - 
@@ -284,7 +284,7 @@ int* upgrade_railway_stations(Graph* g) {
  * city_x is the index of X, city_y is the index of Y
 */
 int distance(Graph* g, int city_x, int city_y) {
-    //Use dji.. somethings algorithm to caculate the shortest path between any two 
+    
     //paths if transitive closure does not contain a path then return -1;
     int** warshallMatrix = warshall(g);
     //asthe cities passed as paramter are zero indexed 
@@ -328,15 +328,7 @@ int distance(Graph* g, int city_x, int city_y) {
         }
     }
 }
-    for (int i = 0; i < len; i++)
-    {
-        for (int j = 0; j < len; j++)
-        {
-            printf("%d ",warshallNew[i][j]);
-        }
-        printf("\n");
-        
-    }
+    
     
     return warshallNew[city_x][city_y];
 
@@ -347,7 +339,25 @@ int distance(Graph* g, int city_x, int city_y) {
  * Return the index of any one possible railway capital in the network
 */
 int railway_capital(Graph* g) {
-    
+    int len = g->n;
+    int capital = 0;
+    int minDistance = 99999999999;
+    for(int i  = 0;i < len;i++){
+        int tempDistance = 0;
+        for(int j = 0; j < len;j++){
+            if(i != j){
+                tempDistance += distance(g,i,j);     
+            }
+            
+        }
+
+        if(tempDistance < minDistance){
+            minDistance = tempDistance;
+            capital = i;
+            printf("%d ",minDistance);
+        }
+    }
+    return capital;
 }
 
 /**
@@ -371,12 +381,12 @@ bool maharaja_express(Graph* g, int source) {
 }
 
 int main() {
-    char input_file_path[100] = "testcase_3.txt"; // Can be modified
+    char input_file_path[100] = "testcase_1.txt"; // Can be modified
     Graph* g = create_graph(input_file_path); // Do not modify
     
     // Code goes here
-    int distance1 = distance(g,3,7);
-    printf("The distance  between the cities is %d", distance1);
+    int capital = railway_capital(g);
+    printf("Railway capital : %s",g->station_names[capital]);
     
 
     return 0;
