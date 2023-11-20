@@ -267,17 +267,49 @@ int find_vital_train_tracks(Graph* g) {
 */
 
 int* upgrade_railway_stations(Graph* g) {
-    int* upgrades = calloc(g->n, sizeof(int)); // Do not modify
+    int* upgrades = calloc(g->n, sizeof(int)); // 0: no upgrade, 1: restaurant, 2: maintenance depot
     
-    // Code goes here
-    //Question involves checking if the graph is bipartite.
-    //Use dfs for coloring the graph and checking if it is possible to color the graph using
-    //two colors
+    // Checking if the graph is bipartite using BFS
+    int* color = calloc(g->n, sizeof(int));
 
+    // Assign temporary color as -1 to all structures
+    for (int i = 0; i < g->n; i++) {
+        color[i] = -1;
+    }
 
-    return upgrades; // Do not modify
+    int queue[g->n];
+    int front = 0, rear = -1;
+    queue[++rear] = 0;
+    color[0] = 0; // Assign the starting vertex a color
+
+    while (front <= rear) {
+        int current = queue[front++];
+
+        for (int i = 0; i < g->n; i++) {
+            if (g->adj[current][i] && color[i] == -1) {
+                color[i] = 1 - color[current];
+                queue[++rear] = i;
+
+                if (rear == g->n - 1) {
+                    rear = 0;
+                }
+            } else if (g->adj[current][i] && color[i] == color[current]) {
+                // Graph is not bipartite, assign NULL to upgrades and return
+                free(upgrades);
+                free(color);
+                return NULL;
+            }
+        }
+    }
+
+    // Assign upgrades based on the colors using if-else statement
+    for (int i = 0; i < g->n; i++) {
+        upgrades[i] = (color[i] == 0) ? 0 : 1; // 0: no upgrade, 1: restaurant, 2: maintenance depot
+    }
+
+    free(color);
+    return upgrades;
 }
-
 /**
  * Q.6
  * Return distance between X and Y
@@ -378,16 +410,26 @@ bool maharaja_express(Graph* g, int source) {
         visited[i] = 0;
     }
     // Hint: Call the helper function and pass the visited array created here.
+    
 }
 
 int main() {
     char input_file_path[100] = "testcase_1.txt"; // Can be modified
     Graph* g = create_graph(input_file_path); // Do not modify
     
-    // Code goes here
-    int capital = railway_capital(g);
-    printf("Railway capital : %s",g->station_names[capital]);
-    
+    int* arr = upgrade_railway_stations(g);
+
+if (arr != NULL) {
+    // Process the result
+    for (int i = 0; i < g->n; i++) {
+        printf("Upgrade for station %s: %s\n", g->station_names[i], (arr[i] == 1) ? "Restaurant" : "Maintenance Depot");
+    }
+
+    // Cleanup (free memory)
+    free(arr);
+} else {
+    printf("Graph is not bipartite. Cannot determine upgrades.\n");
+}
 
     return 0;
 }
