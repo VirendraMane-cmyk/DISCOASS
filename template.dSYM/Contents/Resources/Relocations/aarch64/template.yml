@@ -2,18 +2,18 @@
 triple:          'arm64-apple-darwin'
 binary-path:     '/Users/virendra/Virendra/DISCOASS-1/template'
 relocations:
-  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _create_graph, symObjAddr: 0x0, symBinAddr: 0x1000038D8, symSize: 0x20C }
-  - { offsetInCU: 0x99, offset: 0x99, size: 0x8, addend: 0x0, symName: _create_graph, symObjAddr: 0x0, symBinAddr: 0x1000038D8, symSize: 0x20C }
-  - { offsetInCU: 0x169, offset: 0x169, size: 0x8, addend: 0x0, symName: _checkGreaterThan4, symObjAddr: 0x20C, symBinAddr: 0x100003AE4, symSize: 0xBC }
-  - { offsetInCU: 0x1C9, offset: 0x1C9, size: 0x8, addend: 0x0, symName: _find_junctions, symObjAddr: 0x2C8, symBinAddr: 0x100003BA0, symSize: 0x9C }
-  - { offsetInCU: 0x21B, offset: 0x21B, size: 0x8, addend: 0x0, symName: _sheldons_tour, symObjAddr: 0x364, symBinAddr: 0x100003C3C, symSize: 0x24 }
-  - { offsetInCU: 0x251, offset: 0x251, size: 0x8, addend: 0x0, symName: _warshall, symObjAddr: 0x388, symBinAddr: 0x100003C60, symSize: 0x88 }
-  - { offsetInCU: 0x2A3, offset: 0x2A3, size: 0x8, addend: 0x0, symName: _find_impossible_pairs, symObjAddr: 0x410, symBinAddr: 0x100003CE8, symSize: 0x2C }
-  - { offsetInCU: 0x2D9, offset: 0x2D9, size: 0x8, addend: 0x0, symName: _find_vital_train_tracks, symObjAddr: 0x43C, symBinAddr: 0x100003D14, symSize: 0x14 }
-  - { offsetInCU: 0x301, offset: 0x301, size: 0x8, addend: 0x0, symName: _upgrade_railway_stations, symObjAddr: 0x450, symBinAddr: 0x100003D28, symSize: 0x34 }
-  - { offsetInCU: 0x337, offset: 0x337, size: 0x8, addend: 0x0, symName: _distance, symObjAddr: 0x484, symBinAddr: 0x100003D5C, symSize: 0x1C }
-  - { offsetInCU: 0x37B, offset: 0x37B, size: 0x8, addend: 0x0, symName: _railway_capital, symObjAddr: 0x4A0, symBinAddr: 0x100003D78, symSize: 0x14 }
-  - { offsetInCU: 0x3A3, offset: 0x3A3, size: 0x8, addend: 0x0, symName: _maharaja_express_tour, symObjAddr: 0x4B4, symBinAddr: 0x100003D8C, symSize: 0x28 }
-  - { offsetInCU: 0x403, offset: 0x403, size: 0x8, addend: 0x0, symName: _maharaja_express, symObjAddr: 0x4DC, symBinAddr: 0x100003DB4, symSize: 0x84 }
-  - { offsetInCU: 0x463, offset: 0x463, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x560, symBinAddr: 0x100003E38, symSize: 0x78 }
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _create_graph, symObjAddr: 0x0, symBinAddr: 0x100002880, symSize: 0x20C }
+  - { offsetInCU: 0x99, offset: 0x99, size: 0x8, addend: 0x0, symName: _create_graph, symObjAddr: 0x0, symBinAddr: 0x100002880, symSize: 0x20C }
+  - { offsetInCU: 0x169, offset: 0x169, size: 0x8, addend: 0x0, symName: _checkGreaterThan4, symObjAddr: 0x20C, symBinAddr: 0x100002A8C, symSize: 0xBC }
+  - { offsetInCU: 0x1C9, offset: 0x1C9, size: 0x8, addend: 0x0, symName: _find_junctions, symObjAddr: 0x2C8, symBinAddr: 0x100002B48, symSize: 0x9C }
+  - { offsetInCU: 0x21B, offset: 0x21B, size: 0x8, addend: 0x0, symName: _sheldons_tour, symObjAddr: 0x364, symBinAddr: 0x100002BE4, symSize: 0x25C }
+  - { offsetInCU: 0x33F, offset: 0x33F, size: 0x8, addend: 0x0, symName: _warshall, symObjAddr: 0x5C0, symBinAddr: 0x100002E40, symSize: 0x244 }
+  - { offsetInCU: 0x447, offset: 0x447, size: 0x8, addend: 0x0, symName: _find_impossible_pairs, symObjAddr: 0x804, symBinAddr: 0x100003084, symSize: 0x180 }
+  - { offsetInCU: 0x509, offset: 0x509, size: 0x8, addend: 0x0, symName: _find_vital_train_tracks, symObjAddr: 0x984, symBinAddr: 0x100003204, symSize: 0x1C8 }
+  - { offsetInCU: 0x5CB, offset: 0x5CB, size: 0x8, addend: 0x0, symName: _upgrade_railway_stations, symObjAddr: 0xB4C, symBinAddr: 0x1000033CC, symSize: 0x354 }
+  - { offsetInCU: 0x6B6, offset: 0x6B6, size: 0x8, addend: 0x0, symName: _distance, symObjAddr: 0xEA0, symBinAddr: 0x100003720, symSize: 0x314 }
+  - { offsetInCU: 0x7F6, offset: 0x7F6, size: 0x8, addend: 0x0, symName: _railway_capital, symObjAddr: 0x11B4, symBinAddr: 0x100003A34, symSize: 0x128 }
+  - { offsetInCU: 0x8A4, offset: 0x8A4, size: 0x8, addend: 0x0, symName: _maharaja_express_tour, symObjAddr: 0x12DC, symBinAddr: 0x100003B5C, symSize: 0x158 }
+  - { offsetInCU: 0x927, offset: 0x927, size: 0x8, addend: 0x0, symName: _maharaja_express, symObjAddr: 0x1434, symBinAddr: 0x100003CB4, symSize: 0xB0 }
+  - { offsetInCU: 0x99B, offset: 0x99B, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x14E4, symBinAddr: 0x100003D64, symSize: 0x12C }
 ...

@@ -395,9 +395,28 @@ int railway_capital(Graph* g) {
 /**
  * Helper function for Q.8
 */
+
 bool maharaja_express_tour(Graph* g, int source, int current_city, int previous_city, int* visited) {
-    
+    visited[current_city] = 1;
+   
+    int len = g->n;
+    for (int i = 0; i < len; i++) {
+        if (g->adj[current_city][i] == 1) {
+            if (!visited[i]) {
+                if (maharaja_express_tour(g, source, i, current_city, visited)) {
+                    return true;
+                }
+            } else if (i != previous_city && i == source) {
+                // If we encounter a visited city (other than the previous city) and it is the source,
+                // it indicates a cycle
+                return true;
+            }
+        }
+    }
+
+    return false;
 }
+
 
 /**
  * Q.8 
@@ -406,30 +425,31 @@ bool maharaja_express_tour(Graph* g, int source, int current_city, int previous_
 */
 bool maharaja_express(Graph* g, int source) {
     int* visited = (int*)malloc(g->n * sizeof(int)); 
-    for(int i = 0; i < g->n; i++) {
+    for (int i = 0; i < g->n; i++) {
         visited[i] = 0;
     }
-    // Hint: Call the helper function and pass the visited array created here.
+
+    // Call the helper function and pass the visited array
+    return maharaja_express_tour(g,source,source,source,visited);
     
 }
-
 int main() {
-    char input_file_path[100] = "testcase_1.txt"; // Can be modified
+    char input_file_path[100] = "testcase_3.txt"; // Can be modified
     Graph* g = create_graph(input_file_path); // Do not modify
     
-    int* arr = upgrade_railway_stations(g);
-
-if (arr != NULL) {
-    // Process the result
-    for (int i = 0; i < g->n; i++) {
-        printf("Upgrade for station %s: %s\n", g->station_names[i], (arr[i] == 1) ? "Restaurant" : "Maintenance Depot");
+   
+    for(int i = 0; i < g->n;i++){
+        printf("%s",g->station_names[i]);
+        bool check = maharaja_express(g,i);
+        if(check == true){
+            printf(": Possible\n");
+        }
+        else{
+            printf(": Impossible\n");
+        }
     }
+ 
+        
+       
 
-    // Cleanup (free memory)
-    free(arr);
-} else {
-    printf("Graph is not bipartite. Cannot determine upgrades.\n");
-}
-
-    return 0;
 }
