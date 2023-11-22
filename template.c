@@ -2,10 +2,10 @@
  * Group ID - 28
  * Member 1 Name - Virendrasinh Mane 
  * Member 1 BITS ID - 2022A7PS1175P
- * Member 2 Name - 
- * Member 2 BITS ID - 
- * Member 3 Name - 
- * Member 3 BITS ID - 
+ * Member 2 Name - Samrath Singh Khanuja
+ * Member 2 BITS ID - 2022A7PS1171P
+ * Member 3 Name - Harsh Raj
+ * Member 3 BITS ID - 2022A7PS1179P
 */
 
 // ---------------------------DO NOT MODIFY (Begin)------------------------------
