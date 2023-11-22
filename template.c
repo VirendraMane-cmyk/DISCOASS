@@ -58,31 +58,23 @@ Graph* create_graph(char input_file_path[]) {
  * Q.1 
  * Return the number of junctions.
 */
-bool checkGreaterThan4(int adj[], int n){
-    int count = 0;
-    for(int i = 0; i < n;i++){
-        if(adj[i] == 1){
-            count++;
-        }
-    }
-    if(count >= 4){
-        return true;
-    }
-    return false;
-}
 int find_junctions(Graph* g) {
     int junction = 0;
-    //Graph representation is done using adjacency matrix 
-    //What about the diagonal of the matrix? -> Lengths along the diagonal are represented 
-    //infinity in adjacency matrix.
-    //Junction if atleast 4 1's in the row
-    for(int i  =  0; i < g->n;i++){
-        if(checkGreaterThan4(g->adj[i],g->n) == true){
-        junction++;
+
+    for (int i = 0; i < g->n; i++) {
+        int count = 0;
+        for (int j = 0; j < g->n; j++) {
+            if (g->adj[i][j] == 1) {
+                count++;
+            }
+        }
+
+        if (count >= 4) {
+            junction++;
         }
     }
-    return junction;
 
+    return junction;
 }
 
 /**
@@ -213,10 +205,7 @@ int find_impossible_pairs(Graph* g) {
  * Q.4
  * Return the number of vital train tracks.
 */
-/**
- * Q.4
- * Return the number of vital train tracks.
-*/
+
 int find_vital_train_tracks(Graph* g) {
     int len = g->n;
     int vital_tracks = 0;
@@ -304,7 +293,11 @@ int* upgrade_railway_stations(Graph* g) {
 
     // Assign upgrades based on the colors using if-else statement
     for (int i = 0; i < g->n; i++) {
-        upgrades[i] = (color[i] == 0) ? 0 : 1; // 0: no upgrade, 1: restaurant, 2: maintenance depot
+        if (color[i] == 0) {
+            upgrades[i] = 0;
+        } else {
+            upgrades[i] = 1;
+        } // 0: no upgrade, 1: restaurant, 2: maintenance depot
     }
 
     free(color);
@@ -430,7 +423,7 @@ bool maharaja_express(Graph* g, int source) {
     }
 
     // Call the helper function and pass the visited array
-    return maharaja_express_tour(g,source,source,source,visited);
+    return maharaja_express_tour(g,source,source,-1,visited);
     
 }
 int main() {

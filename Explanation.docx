@@ -1,1 +1,50 @@
+Q.1
+Count Junctions:
+Go through each station in the railway network.
+For every station, count how many different stations it's directly connected to.
+If the count is 4 or more, consider the station a junction and increase the junction count.
+Q.2
+Check for Euler Circuit:
+Check if the railway network is connected.
+Count how many stations have an odd number of tracks connected to them.
+If the network is not connected or more than two stations have an odd number of tracks, then there's no Euler circuit.
+If there are exactly two stations with an odd number of tracks, it's possible to have an Euler path.
+If all vertices have an even degree, it indicates the presence of an Euler circuit (a closed Euler path). This scenario satisfies the conditions for the first question about the Euler circuit. In this case, return true for the first question and false for the second question.
 
+Q.3
+Warshall's Algorithm for Transitive Closure:
+Use Warshall's algorithm to find which cities are directly or indirectly connected by train tracks.
+The resulting matrix will tell us which pairs of cities can be traveled between using one or more trains.
+Q.4
+Count Vital Tracks:
+Go through each track in the network.
+Temporarily remove one track at a time and check if it impacts the connectivity between cities.
+If removing a track disconnects some cities, count it as a vital track.
+Find the closure by removing the tracks between the two cities and checking if the closure is affected.
+Restore the track and repeat for all tracks.
+Q.5
+Check if Stations Can be Upgraded:
+Use Breadth-First Search (BFS) to check if the railway network is bipartite (can be divided into two sets of stations).
+Custom function can not be made so queue will have to be used for iterative checking.
+Assign colours (e.g., maintenance depot and restaurant) to the stations.
+If stations can be coloured without any adjacent stations having the same color, then it's possible to upgrade the stations as required.
+Q.6
+Find Distance Between Cities:
+Implement a method to find the minimum distance between two cities.
+From the implementation of the create_graph method, it can be inferred that the graph will not be weighted, each path length is 1.
+If an edge exists between any two cities then it will be the shortest path.
+Make a custom W0 (first Warshall matrix )inputting the max value of int instead of 0(as the 0 entries won't allow the min method to work properly).
+Return the distance to travel between the given cities.
+Q.7
+Nominate Railway Capital:
+For each city in the network, calculate the sum of distances to all other cities.
+Use the function distance(given in Q.6). 
+The city with the minimum sum is a candidate for the railway capital.
+Q.8
+Check Maharaja Express Tour Source Cities:
+The question involves checking if there exists a cycle in the given and if the given vertex is a part of the cycle.
+The helper function will be called recursively checking if the city currently at is the source city.
+If a city connected to the current city is not visited, then call the function recursively.
+If we encounter a visited city (other than the previous city) and it is the source, it indicates a cycle.
+The exit condition is given in the for loop because we are passing the current and previous cities as the source and if the exit condition is at the top the function will exit immediately
+.
